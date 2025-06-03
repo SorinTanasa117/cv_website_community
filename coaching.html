@@ -1,358 +1,203 @@
-body {
-    font-family: Lora, sans-serif;
-    margin: 0;
-    padding: 4.375rem 0 0 0; /* 70px converted to rem. Add padding-top to body for fixed nav, adjust 70px based on nav height */
-    color: #333;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* SVG Separator Styles */
+        @keyframes growLine {
+            from {
+                stroke-dasharray: 1100;
+                stroke-dashoffset: 1100;
+            }
+            to {
+                stroke-dasharray: 1100;
+                stroke-dashoffset: 0;
+            }
+        }
 
-    max-height: 310vh;
-    display: flex;
-    flex-direction: column;
-}
-nav {
-    background-color: #333;
-    color: #fff;
-    padding: 0.625rem 0; /* 10px */
-    position: fixed; /* Fix the navigation bar to the top */
-    top: 0;
-    left: 0;
-    width: 100%; /* Make it span the entire width */
-    z-index: 100; /* Ensure it's on top of other content */
-}
+        .animated-separator-svg {
+            width: 100%; /* Make it responsive */
+            height: auto; /* Maintain aspect ratio */
+            overflow: visible; /* Ensure animation is not clipped */
+            display: block; /* Remove extra space below SVG */
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
+        .animated-separator-line {
+            stroke-width: 3; /* Thicker line */
+            stroke-linecap: round; /* Rounded ends for the line */
+            stroke-dasharray: 0 1100; /* Ensure line is initially hidden */
+            /* No animation property here by default */
+        }
 
-nav ul li {
-    margin: 0 1.25rem; /* 20px */
-    position: relative;
-}
+        /* Class to trigger animation when element is in view */
+        .animated-separator-line.animate-now {
+            animation: growLine 0.5s ease-out forwards; /* Apply animation when 'animate-now' class is present */
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    padding: 0.625rem; /* 10px */
-    border-radius: 0.3125rem; /* 5px */
-    transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover {
-    background-color: #b0e2ff;
-    color: #333;
-}
-
-.dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    padding: 0;
-    margin: 0;
-    width: 9.375rem; /* 150px */
-    text-align: left;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.2); /* 0px 8px 16px 0px */
-    z-index: 1;
-}
-
-.dropdown li {
-    display: block;
-    margin: 0;
-}
-
-.dropdown li a {
-    padding: 0.625rem; /* 10px */
-    color: #fff;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown li a:hover {
-    background-color: #b0e2ff;
-    color: #333;
-}
-
-nav ul li:hover .dropdown {
-    display: block;
-}
-
-section {
-    padding: 1.25rem 3.125rem; /* 20px 50px */
-    margin: 0 auto; /* Removed top/bottom margin, and centered horizontally */
-    background-color: #fff;
-    box-sizing: border-box;
-    max-width: 90%;
-    flex: 1;
-}
-
-.subsection h2 {
-    font-size: 2.25rem;
-    margin-top: 0vh; /* Keeps the title's position from the section top */
-    margin-bottom: -0.8125rem; /* -13px */ /* <--- CRITICAL FIX: Pulls the content up. Adjust this value (e.g., -40px, -60px) to fine-tune spacing. */
-}
-
-.subsection {
-    font-size: 1.25rem;
-    margin-bottom: 0; /* This likely controls spacing between subsections */
-}
-
-h1, h2 {
-    color: #000;
-    font-size: 2.1875rem;
-}
-
-/* Consolidated and corrected .content rule */
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Aligns content to the top within the flex container */
-    flex-direction: row; /* Ensures all content blocks have the same flex direction */
-    padding: 4vh 0;
-}
-.content:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.image {
-    width: 50%;
-    padding: 1.25rem; /* 20px */
-    margin-top: 0; /* <--- CRITICAL FIX: Remove this to prevent pushing the image down */
-}
-
-.image img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10vh; /* Keeps spacing below the image if desired */
-}
-
-.text {
-    padding: 1.25rem; /* 20px */
-    max-width: 100ch;
-    font-family: Lora;
-    font-size: 1.375rem;
-    width: 50%;
-    /* float: left; <--- RECOMMEND REMOVING THIS. Use flexbox properties for layout. */
-}
-
-.text p {
-  /* This sets the space AFTER each paragraph */
-  margin-bottom: 0.8em; /* This will be half the default paragraph spacing */
-
-  /* Optional: Ensure normal line spacing within each paragraph */
-  line-height: 1.5; /* Or whatever value looks good for your text */
-}
-
-/* Important: Remove the margin from the very last paragraph to avoid extra space at the bottom */
-.text p:last-child {
-  margin-bottom: 0;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 0vh;
-    font-size: 1.25rem;
-    color: #3b7582;
-    max-width: 400ch;
-    font-family: 'Cranberry', cursive;
-    padding: 50vh;
-    margin-top: -5vh;
-}
-
-
-
-.white-section:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.whatsapp-logo {
-    height: 1.875rem; /* 30px */
-    width: auto;
-}
-
-.meetup-logo {
-    height: 1.875rem; /* 30px */
-    width: auto;
-}
-
-.logo-container {
-    text-align: center;
-    position: relative;
-    top: -3.125rem; /* -50px */
-}
-
-.connecting-container {
-    position: relative;
-    bottom: 3.125rem; /* 50px */
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.title-container {
-    text-align: center;
-    position: relative;
-    top: -3.125rem; /* -50px */
-}
-
-.title-container h1 {
-    font-size: 2.8125rem;
-    margin-top: 6.25rem; /* 100px */
-    margin-bottom: 1.25rem; /* 20px */
-    color: #000;
-}
-
-.logo-container .logo-svg {
-    top: 15.625rem; /* 250px */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.separator-svg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.animated-separator-line {
-    stroke-width: 8;
-    stroke-linecap: round;
-    stroke: #ffffff;
-    stroke-dasharray: 1024;
-    stroke-dashoffset: 1024;
-    stroke-linecap: butt;
-}
-
-.anchor-offset {
-    scroll-margin-top: 17vh;
-}
-
-
-.page-wrapper {
-    max-height: 300vh;
-    overflow-y: auto; /* still allow scrolling if needed */
-}
-
-
-@keyframes node-connect {
-    0% {
-        opacity: 0;
-        transform: translate(var(--initial-x), var(--initial-y)) scale(0.5);
-    }
-    70% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-/* Send Email Button Styles */
-.send-button {
-    background-color: white;
-    border: 0.125rem solid #888; /* 2px */
-    border-radius: 1.5625rem; /* 25px, Reduced from 30% larger */
-    padding: 0.625rem 1rem; /* 10px 16px */
-    display: flex;
-    align-items: center;
-    gap: 0.625rem; /* 10px */
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-  }
-
-  .send-button:hover {
-    border-color: #444;
-  }
-
-  .icon-wrapper {
-    width: 1.75rem; /* 28px */
-    height: 1.75rem; /* 28px */
-    position: relative;
-    flex-shrink: 0;
-  }
-
-  .icon {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-  }
-
-  .email-icon svg {
-    stroke: #333;
-    fill: none;
-    stroke-width: 2;
-  }
-
-  .check-icon {
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  .check-icon svg {
-    fill: white;
-    width: 1rem; /* 16px */
-    height: 1rem; /* 16px */
-  }
-
-  .email-icon {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .label {
-    font-size: 1rem;
-    color: #333;
-    transition: all 0.3s ease;
-  }
-
-  .sent .email-icon {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  .sent .check-icon {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .sent .label::before {
-    content: "Sent";
-  }
-
-  .label::before {
-    content: "Send Email";
-  }
-</style>
+        /* Specific separator colors */
+        .separator-black .animated-separator-line {
+            stroke: #000000;
+        }
+        .separator-white .animated-separator-line {
+            stroke: #ffffff;
+        }
+    </style>
 </head>
 <body>
+     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all SVG separator line elements
+            const separatorLines = document.querySelectorAll('.animated-separator-line');
 
-@keyframes line-draw {
-    0% {
-        stroke-dashoffset: 200;
-        opacity: 0;
-    }
-    100% {
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-}
+            // Options for the Intersection Observer
+            const options = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px', // No margin around the root
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            // Callback function for the Intersection Observer
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    const line = entry.target;
+                    if (entry.isIntersecting) {
+                        // If the element is intersecting (visible)
+                        // Remove the class to reset the animation
+                        line.classList.remove('animate-now');
+                        // Use a small timeout to ensure the browser registers the class removal
+                        // before re-adding it, forcing the animation to restart.
+                        setTimeout(() => {
+                            line.classList.add('animate-now');
+                        }, 10); // A small delay, e.g., 10ms, is often sufficient
+                    } else {
+                        // If the element is no longer intersecting, remove the class
+                        // This prepares it to re-animate when it comes into view again
+                        line.classList.remove('animate-now');
+                        // Ensure the line is visually reset to its starting point
+                        line.style.strokeDasharray = '0 1100';
+                    }
+                });
+            };
+
+            // Create a new Intersection Observer
+            const observer = new IntersectionObserver(observerCallback, options);
+
+            // Observe each separator line
+            separatorLines.forEach(line => {
+                observer.observe(line);
+            });
+        });
+    </script>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li>
+                <a href="community.html">Community</a>
+                <ul class="dropdown">
+                    <li><a href="community.html#ideaverse">IdeaVerse</a></li>
+                    <li><a href="community.html#agora-network">Agora Network</a></li>
+                    <li><a href="community.html#tea-ceremony">Tea ceremony</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="coaching.html">Coaching</a>
+                <ul class="dropdown">
+                    <li><a href="coaching.html#community-building">Community building</a></li>
+                    <li><a href="coaching.html#effective-meetings">Effective meetings</a></li>
+                    <li><a href="coaching.html#tea-mastery">Tea mastery</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="coaching">
+        <div class="subsection white-section" >
+            <div id="community-building" class="anchor-offset">
+                <h2>Community building</h2>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <p>Becoming your true self has been marketed as a the new mark of success, your victory over the despotism of social conformity.
+                    <p>The result: billions of lonely people begging for attention on social media and dating apps, selling their individuality for likes and buying things to impress others.
+                    <p>Many people are waking up to understand they need to know others at least as much as they need to know themselves.
+                    <p>Seeing this, I went on a journey to discover and apply everything I could to help people connect: with each other, with their ideas and with the traditions that created them.
+                    <p>Today I help people create and manage their communities, by sharing the secrets that helped me create and manage a community of purpose in Prague.
+                    <p>
+                </div>
+                <div class="image">
+                    <img src="images/ideaverse.png" alt="Community building">
+                </div>
+            </div>
+            <div class="flex justify-center w-full" style="margin-top: 4vh;">
+                <svg class="animated-separator-svg separator-black" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line class="animated-separator-line" x1="3" y1="10" x2="1100" y2="10" />
+                </svg>
+            </div>
+        </div>
+        <div class="subsection white-section"  style="margin-top: 4vh;" >
+            <div id="effective-meetings" class="anchor-offset">
+                <h2>Effective meetings</h2>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <p>
+                    Imagine a time when everyone spoke one language, helping them build a great civilization able of building soaring towers. That is, until divine intervention caused them to speak different tongues, bringing their civilization to it's knees. 
+                    <p>
+                    This isn't just a mythical story; it's an allegory of human communication: we speak and listen to build things together, but constantly  misunderstandings get in the way of connection and progress.
+                    <p>
+                    With over five years as a Toastmaster and countless philosophical discussions, I've dedicated myself to understanding this challenge. 
+                    <p>
+                    Through this journey, I've perfected a communication framework that minimizes misunderstandings, ensuring you and your team work in harmony on any project.
+                    <p>
+                </div>
+                <div class="image">
+                    <img src="images/agora.png" alt="Effective meetings">
+                </div>
+            </div>
+            <div class="flex justify-center w-full" style="margin-top: 5vh;">
+                <svg class="animated-separator-svg separator-black" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line class="animated-separator-line" x1="3" y1="10" x2="1100" y2="10" />
+                </svg>
+            </div>
+        </div>
+        <div class="subsection white-section"  >
+            <div id="tea-mastery" class="anchor-offset" style="margin-top: 20vh;">
+                <h2>Tea mastery</h2>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <p>
+                    Discover the intricate art of hosting a Chinese tea ceremony, a practice rich in history and philosophical depth.
+                    <p>
+                    This course will guide you through the elegant traditions of Gongfu Cha, focusing on its philosophy, technique, and hosting etiquette.
+                    <p>
+                    Beyond the technical skills of brewing tea, we'll explore how this ritual cultivates mindfulness and connection.
+                    <p>
+                    This course is suitable for people looking to connect more with the present moment and who have an appreciation of the meaning of leading through service.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="images/tea.png" alt="Tea mastery">
+                </div>
+            </div>
+            <div class="flex justify-center w-full" style="margin-top: -26vh;">
+                <svg class="animated-separator-svg separator-black" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line class="animated-separator-line" x1="3" y1="10" x2="1100" y2="10" />
+                </svg>
+            </div>
+        </div>
+    </section>
+   
+    <footer class="flex justify-center items-center gap-4 py-2 mb-0">
+        <p>'The highest good is like water.<br>Water benefits all things and does not compete.<br>
+            It stays in the lowly places that others disdain.<br>Therefore it is close to the Tao.'
+        <br><br><em>Lao Tzu, Tao Te Ching (on leadership), Chapter 8</em>.</p>
+    </footer>
+</body>
+</html>
