@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         const subsections = document.querySelectorAll('.subsection');
         subsections.forEach(subsection => {
-            subsection.style.height = '100vh';
+            subsection.style.minHeight = '100vh';
         });
     });
 
