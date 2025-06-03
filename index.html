@@ -120,16 +120,61 @@
         <div class="title-container">
             <h1>Sorin Tanasa, PhD</h1>
             <div class="logo-container">
-                <img class="logo-svg" src="/logo.svg" alt="Sorin Tanasa Logo" width="360" height="360">
+                <img class="logo-svg" src="logo.svg" alt="Sorin Tanasa Logo" width="360" height="360">
                 <div class="connecting-container">
-                    <img class="connecting-svg" src="/connecting.svg" alt="Connecting people motto" width="360" height="360">
+                    <img class="connecting-svg" src="connecting.svg" alt="Connecting people motto" width="360" height="360">
                 </div>
             </div>
         </div>
     </section>
 
     
-        <script src="script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdowns = document.querySelectorAll('.dropdown');
+
+                dropdowns.forEach(dropdown => {
+                    const parent = dropdown.parentNode;
+                    parent.addEventListener('mouseenter', function() {
+                        dropdown.classList.add('show');
+                    });
+                    parent.addEventListener('mouseleave', function() {
+                        dropdown.classList.remove('show');
+                    });
+
+                    const subsections = document.querySelectorAll('.subsection');
+                    subsections.forEach(subsection => {
+                        subsection.style.height = '100vh';
+                    });
+                });
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            });
+
+            // Reset animations on page load
+            const animatedNodes = document.querySelectorAll('.animated-node');
+            animatedNodes.forEach(node => {
+                node.classList.remove('animated-node');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                node.classList.add('animated-node');
+            });
+
+            const animatedLines = document.querySelectorAll('.animated-line');
+            animatedLines.forEach(line => {
+                line.classList.remove('animated-line');
+                void line.offsetWidth; // Trigger reflow to restart animation
+                line.classList.add('animated-line');
+            });
+        </script>
 
     </body>
     </html>
