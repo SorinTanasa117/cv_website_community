@@ -1,0 +1,30 @@
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+        const parent = dropdown.parentNode;
+        parent.addEventListener('mouseenter', function() {
+            dropdown.classList.add('show');
+        });
+        parent.addEventListener('mouseleave', function() {
+            dropdown.classList.remove('show');
+        });
+    
+        const subsections = document.querySelectorAll('.subsection');
+        subsections.forEach(subsection => {
+            subsection.style.height = '100vh';
+        });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});

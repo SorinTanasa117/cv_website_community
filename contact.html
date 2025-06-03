@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li>
+                <a href="community.html">Community</a>
+                <ul class="dropdown">
+                    <li><a href="community.html#ideaverse">Ideaverse</a></li>
+                    <li><a href="community.html#agora-network">Agora Network</a></li>
+                    <li><a href="community.html#tea-ceremony">Tea ceremony</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="coaching.html">Coaching</a>
+                <ul class="dropdown">
+                    <li><a href="coaching.html#community-building">Community building</a></li>
+                    <li><a href="coaching.html#effective-meetings">Effective meetings</a></li>
+                    <li><a href="coaching.html#tea-mastery">Tea mastery</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="contact">
+        <h2>Contact</h2>
+        <div style="display: flex;">
+            <div class="text">
+                <p>If you are interested in a lecture, collaboration, media output, consultation or mentoring, please feel free to contact me by email or in the contact form.</p>
+                <form action="mailto:tanasa.sorin@gmail.com" method="post" enctype="text/plain">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="email">Email (required):</label><br>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="message">Message (required):</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+                    <button class="send-button" type="submit">
+                        <div class="icon-wrapper">
+                            <!-- Email Icon -->
+                            <div class="icon email-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 5h18v14H3z"/>
+                                    <polyline points="3,5 12,13 21,5"/>
+                                </svg>
+                            </div>
+                            <!-- Checkmark Icon -->
+                            <div class="icon check-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="label"></span>
+                    </button>
+                </form>
+                <p>If you would also like to speak by phone, please provide your phone number.</p>
+                <p>Alternatively, you can contact me on social media:</p>
+                <ul style="list-style-type: none; display: flex;">
+                    <li>
+                        <a href="https://www.meetup.com/members/191312989/" style="margin-right: 2vh;"><img src="images/meetup.svg" alt="Meetup" style="height: 6vh;"></a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/+420739700614" style="margin-right: 2vh;"><img src="images/whatsapp.svg" alt="WhatsApp" style="height: 6vh;"></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sorin-tanasa/" style="margin-right: 2vh;"><img src="images/linkedin.svg" alt="LinkedIn" style="height: 6vh;"></a>
+                    </li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-left: 15vh;">
+                <p style="font-size:3.5vh;">Find me on WhatsApp:</p>
+                <img class="whatsapp-qr" src="images/qr.png" alt="WhatsApp QR Code" style="width: 200px; height: 200px; margin-top: 10px;">
+            </div>
+        </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

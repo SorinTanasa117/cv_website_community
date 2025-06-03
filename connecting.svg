@@ -1,0 +1,25 @@
+<svg
+  width="100%"
+  height="100%"
+  viewBox="0 0 600 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    <![CDATA[
+    /* Define a modern font and basic text styling */
+    text {
+      font-family: 'Inter', sans-serif; /* Using Inter font, common in web design */
+      font-size: 60px;
+      fill: #333; /* Dark gray color for the text */
+      font-weight: bold; /* Make the text bold for better visibility */
+    }
+    ]]>
+  </style>
+
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
+    <tspan opacity="0">C<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4s" fill="freeze" /></tspan><tspan opacity="0">o<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.1s" fill="freeze" /></tspan><tspan opacity="0">n<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.2s" fill="freeze" /></tspan><tspan opacity="0">n<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.3s" fill="freeze" /></tspan><tspan opacity="0">e<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.4s" fill="freeze" /></tspan><tspan opacity="0">c<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.5s" fill="freeze" /></tspan><tspan opacity="0">t<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.6s" fill="freeze" /></tspan><tspan opacity="0">i<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.7s" fill="freeze" /></tspan><tspan opacity="0">n<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.8s" fill="freeze" /></tspan><tspan opacity="0">g<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="4.9s" fill="freeze" /></tspan>
+    <tspan opacity="0"> <animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.0s" fill="freeze" /></tspan>
+    <tspan opacity="0">p<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.1s" fill="freeze" /></tspan><tspan opacity="0">e<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.2s" fill="freeze" /></tspan><tspan opacity="0">o<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.3s" fill="freeze" /></tspan><tspan opacity="0">p<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.4s" fill="freeze" /></tspan><tspan opacity="0">l<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.5s" fill="freeze" /></tspan><tspan opacity="0">e<animate attributeName="opacity" from="0" to="1" dur="0.25s" begin="5.6s" fill="freeze" /></tspan>
+  </text>
+</svg>

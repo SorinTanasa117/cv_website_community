@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .logo-container {
+            text-align: center;
+            position: relative; /* Add relative positioning */
+        }
+
+        .connecting-container {
+
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Ensure it's on top */
+
+        }
+
+        /* Keyframes for node animation: fade in, scale up, and move to final position */
+        @keyframes node-connect {
+          0% {
+            opacity: 0;
+            transform: translate(var(--initial-x), var(--initial-y)) scale(0.5);
+          }
+          70% { /* Nodes move and scale up */
+            opacity: 1;
+            transform: translate(0, 0) scale(1.1);
+          }
+          100% { /* Settle at final position and scale */
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+          }
+        }
+
+        /* Keyframes for line drawing animation */
+        @keyframes line-draw {
+          0% {
+            stroke-dashoffset: 200; /* Start with line fully hidden */
+            opacity: 0;
+          }
+          100% {
+            stroke-dashoffset: 0; /* End with line fully drawn */
+            opacity: 1;
+          }
+        }
+
+        /* Styles for animated nodes */
+        .animated-node {
+          fill: #6366F1; /* Indigo 500 */
+          stroke: #4F46E5; /* Indigo 600 */
+          stroke-width: 2;
+          opacity: 0; /* Start hidden */
+          transform-origin: center center; /* Ensure scaling and translation work correctly */
+          animation: node-connect 2s ease-out forwards; /* Play once and stop at end state */
+        }
+
+        /* Styles for animated lines */
+        .animated-line {
+          stroke: #4F46E5; /* Indigo 600 */
+          stroke-width: 3;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 200; /* Needs to be larger than the longest path length */
+          stroke-dashoffset: 200; /* Start with line hidden */
+          opacity: 0; /* Start hidden */
+          animation: line-draw 1s ease-out forwards; /* Play once and stop at end state */
+          animation-fill-mode: forwards;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li>
+                <a href="community.html">Community</a>
+                <ul class="dropdown">
+                    <li><a href="community.html#ideaverse">Ideaverse</a></li>
+                    <li><a href="community.html#agora-network">Agora Network</a></li>
+                    <li><a href="community.html#tea-ceremony">Tea ceremony</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="coaching.html">Coaching</a>
+                <ul class="dropdown">
+                    <li><a href="coaching.html#community-building">Community building</a></li>
+                    <li><a href="coaching.html#effective-meetings">Effective meetings</a></li>
+                    <li><a href="coaching.html#tea-mastery">Tea mastery</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        
+    </nav>
+    <section id="home">
+        <div class="title-container">
+            <h1>Sorin Tanasa, PhD</h1>
+            <div class="logo-container">
+                <img class="logo-svg" src="logo.svg" alt="Sorin Tanasa Logo" width="360" height="360">
+                <div class="connecting-container">
+                    <img class="connecting-svg" src="connecting.svg" alt="Connecting people motto" width="360" height="360">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+        <script src="script.js"></script>
+        <footer>
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER"><img class="whatsapp-logo" src="images/whatsapp.png" alt="WhatsApp"></a>
+            <a href="https://www.meetup.com/"><img class="meetup-logo" src="images/Meetup.svg" alt="Meetup"></a>
+        </footer>
+    </body>
+    </html>

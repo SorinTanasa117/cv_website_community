@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growing Line SVG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply Inter font and basic styling */
+        body {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8; /* Light background */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Container for the SVG to center it and add padding */
+        .svg-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%; /* Ensure responsiveness */
+            width: auto; /* Adjust width based on content */
+        }
+
+        /* Define the animation for the line */
+        @keyframes growLine {
+            from {
+                stroke-dasharray: 0 1024; /* Start with no visible line */
+            }
+            to {
+                stroke-dasharray: 1024 0; /* End with full line visible */
+            }
+        }
+
+        /* Style for the SVG line */
+        .animated-line {
+            stroke: #000000; /* Indigo color for the line */
+            stroke-width: 8; /* Thicker line */
+            stroke-linecap: round; /* Rounded ends for the line */
+            animation: growLine 0.5s ease-out forwards; /* Apply animation: 1.s duration (2x faster), ease-out timing, stay at end state */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div class="svg-container">
+        <!--
+            SVG element to draw the line.
+            The viewBox is set to accommodate a line of 1024 pixels length horizontally.
+            The height is set to 10 for the line's stroke-width, plus some padding.
+            The width is set to 1030 to give a little extra space around the 1024px line.
+        -->
+        <svg width="1030" height="20" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!--
+                The line element.
+                x1, y1: Starting coordinates of the line.
+                x2, y2: Ending coordinates of the line.
+                Initially, x2 is set to 0, and the animation will expand it to 1024.
+                stroke-dasharray is used to create the growing effect.
+                The animation 'growLine' will transition stroke-dasharray from '0 1024' to '1024 0'.
+                This makes the line appear to draw itself from left to right.
+            -->
+            <line class="animated-line" x1="3" y1="10" x2="1027" y2="10" />
+        </svg>
+    </div>
+</body>
+</html>

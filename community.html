@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* SVG Separator Styles */
+        @keyframes growLine {
+            from {
+                stroke-dasharray: 1100;
+                stroke-dashoffset: 1100;
+            }
+            to {
+                stroke-dasharray: 1100;
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .animated-separator-svg {
+            width: 100%; /* Make it responsive */
+            height: auto; /* Maintain aspect ratio */
+            overflow: visible; /* Ensure animation is not clipped */
+            display: block; /* Remove extra space below SVG */
+        }
+
+        .animated-separator-line {
+            stroke-width: 3; /* Thicker line */
+            stroke-linecap: round; /* Rounded ends for the line */
+            stroke-dasharray: 0 1100; /* Ensure line is initially hidden */
+            /* No animation property here by default */
+        }
+
+        /* Class to trigger animation when element is in view */
+        .animated-separator-line.animate-now {
+            animation: growLine 0.5s ease-out forwards; /* Apply animation when 'animate-now' class is present */
+        }
+
+        /* Specific separator colors */
+        .separator-black .animated-separator-line {
+            stroke: #000000;
+        }
+        .separator-white .animated-separator-line {
+            stroke: #ffffff;
+        }
+    </style>
+</head>
+<body>
+     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all SVG separator line elements
+            const separatorLines = document.querySelectorAll('.animated-separator-line');
+
+            // Options for the Intersection Observer
+            const options = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px', // No margin around the root
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            // Callback function for the Intersection Observer
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    const line = entry.target;
+                    if (entry.isIntersecting) {
+                        // If the element is intersecting (visible)
+                        // Remove the class to reset the animation
+                        line.classList.remove('animate-now');
+                        // Use a small timeout to ensure the browser registers the class removal
+                        // before re-adding it, forcing the animation to restart.
+                        setTimeout(() => {
+                            line.classList.add('animate-now');
+                        }, 10); // A small delay, e.g., 10ms, is often sufficient
+                    } else {
+                        // If the element is no longer intersecting, remove the class
+                        // This prepares it to re-animate when it comes into view again
+                        line.classList.remove('animate-now');
+                        // Ensure the line is visually reset to its starting point
+                        line.style.strokeDasharray = '0 1100';
+                    }
+                });
+            };
+
+            // Create a new Intersection Observer
+            const observer = new IntersectionObserver(observerCallback, options);
+
+            // Observe each separator line
+            separatorLines.forEach(line => {
+                observer.observe(line);
+            });
+        });
+    </script>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li>
+                <a href="community.html">Community</a>
+                <ul class="dropdown">
+                    <li><a href="community.html#ideaverse">IdeaVerse</a></li>
+                    <li><a href="community.html#agora-network">Agora Network</a></li>
+                    <li><a href="community.html#tea-ceremony">Tea ceremony</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="coaching.html">Coaching</a>
+                <ul class="dropdown">
+                    <li><a href="coaching.html#community-building">Community building</a></li>
+                    <li><a href="coaching.html#effective-meetings">Effective meetings</a></li>
+                    <li><a href="coaching.html#tea-mastery">Tea mastery</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="coaching">
+        <div class="subsection white-section" >
+            <div id="ideaverse" class="anchor-offset">
+                <h2>IdeaVerse</h2>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <p>There is a world of ideas lying outside of social media and the greater Internet. These are the ideas living in our minds: hopes, dreams, beliefs and questions.
+                    
+                    </p>I call this world of ideas the IdeaVerse.
+                    
+                    </p>We have all come to understand recently that digital medias don't reveal our true ideas, because the truth doesn't always sell or gives us the relationships we seek.
+                    
+                    </p>IdeaVerse meetings are a place I created to allow participants to enter a healthy dialogue and join each other in communities, as a refuge from the  increasingly alienating virtual world.\
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="images/ideaverse.png" alt="IdeaVerse">
+                </div>
+            </div>
+            <div class="flex justify-center w-full" style="margin-top: 4vh;">
+                <svg class="animated-separator-svg separator-black" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line class="animated-separator-line" x1="3" y1="10" x2="1100" y2="10" />
+                </svg>
+            </div>
+        </div>
+        <div class="subsection white-section"  style="margin-top: 10vh;" >
+            <div id="agora-network" class="anchor-offset">
+                <h2>Agora Network</h2>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <p>In ancient Greece, the Agora was a place where people gathered to exchange ideas, host performances, and engage with their community. Inspired by this tradition, our group is a space for thoughtful conversation, shared experiences, and intellectual adventure.</p>
+                    
+                    <p>Agora isn't just another discussion to join or event to attend—it's an invitation to explore what might be possible for ourselves and the world around us.</p>
+                    
+                    <p>This meetup is organized by my dear friend Justin Mainous, using the same discussion format I established in 2023 and consistently allowing open and enlightning onversations that have brought countless people together as a community ever since.</p>
+                </div>
+                <div class="image">
+                    <img src="images/agora.png" alt="Agora Network">
+                </div>
+            </div>
+            <div class="flex justify-center w-full" style="margin-top: 5vh;">
+                <svg class="animated-separator-svg separator-black" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line class="animated-separator-line" x1="3" y1="10" x2="1100" y2="10" />
+                </svg>
+            </div>
+        </div>
+        <div class="subsection white-section"  >
+            <div id="tea-ceremony" class="anchor-offset" style="margin-top: 20vh;">
+                <h2>Tea ceremony</h2>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <p>The Chinese tea ceremony is a centuries-old tradition that embodies a philosophy of simplicity and balance, fostering a moment of quiet reflection.
+
+                    <p>Central to this tradition is the Chinese character for tea, 茶 (chá), which consists of three parts: 艹 (cǎo), meaning "grass"; 人 (rén), meaning "person"; and 木 (mù), meaning "wood" or "tree." This composition beautifully symbolizes the connection between nature and humanity, highlighting tea as a gift from the earth.
+
+                    <p>Guests will be guided through the delicate process of brewing and serving tea, appreciating its fragrance, taste, and the mindful gestures involved.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="images/cha.png" alt="Tea ceremony">
+                </div>
+            </div>
+            <div class="flex justify-center w-full" style="margin-top: -26vh;">
+                <svg class="animated-separator-svg separator-black" viewBox="0 0 1030 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line class="animated-separator-line" x1="3" y1="10" x2="1100" y2="10" />
+                </svg>
+            </div>
+        </div>
+    </section>
+   
+    <footer class="flex justify-center items-center gap-4 py-2 mb-0">
+        <p>'Good friends, good companions, and good associates are not just part of the spiritual life. They ARE the spiritual life.'
+        <br><br><em>The Buddha, Upaddhasutta, SN 45.2</em></p>
+    </footer>
+</body>
+</html>
