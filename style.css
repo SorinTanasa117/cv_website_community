@@ -93,13 +93,13 @@ section {
 
 .subsection h2 {
     font-size: 2.25rem;
-    margin-top: 0vh; /* Keeps the title's position from the section top */
     margin-bottom: -0.8125rem; /* -13px */ /* <--- CRITICAL FIX: Pulls the content up. Adjust this value (e.g., -40px, -60px) to fine-tune spacing. */
 }
 
 .subsection {
     font-size: 1.25rem;
-    margin-bottom: -13vh; /* This likely controls spacing between subsections */
+    margin-bottom: 0; /* This likely controls spacing between subsections */
+    position: relative;
 }
 
 h1, h2 {
@@ -113,7 +113,7 @@ h1, h2 {
     justify-content: center;
     align-items: flex-start; /* Aligns content to the top within the flex container */
     flex-direction: row; /* Ensures all content blocks have the same flex direction */
-    padding: 8vh 0;
+    padding: 4vh 0;
 }
 .content:after {
     content: "";
@@ -130,7 +130,7 @@ h1, h2 {
 .image img {
     width: 100%;
     height: auto;
-    margin-bottom: 10vh; /* Keeps spacing below the image if desired */
+    margin-bottom: 13vh; /* Keeps spacing below the image if desired */
 }
 
 .text {
@@ -235,7 +235,7 @@ footer {
 }
 
 .anchor-offset {
-    scroll-margin-top: 17vh;
+    scroll-margin-top: 12vh;
 }
 
 
@@ -355,4 +355,12 @@ footer {
         stroke-dashoffset: 0;
         opacity: 1;
     }
+}
+
+
+.subsection-separator-wrapper {
+    position: absolute;
+    bottom: 50vh;
+    left: 0;
+    right: 0;
 }
