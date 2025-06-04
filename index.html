@@ -90,202 +90,11 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-    /* --- Mobile Navigation Styles --- */
-    @media (max-width: 767px) { /* Corresponds to Tailwind's 'md' breakpoint */
-        /* Default state for mobile nav UL */
-        #main-nav-ul {
-            display: none; /* Hidden by default on mobile */
-            flex-direction: column;
-            position: absolute;
-            top: 100%; /* Position below the nav bar itself */
-            left: 0;
-            right: 0;
-            background-color: #333; /* Same as nav background */
-            z-index: 90; 
-            padding-bottom: 1rem;
-        }
-
-        /* State when mobile menu is active */
-        #main-nav-ul.mobile-menu-active {
-            display: flex !important; /* Show the menu. Use !important if needed to override other display properties. */
-        }
-
-        #main-nav-ul li {
-            width: 100%;
-            margin: 0;
-            text-align: left;
-        }
-
-        #main-nav-ul li a {
-            padding: 0.75rem 1rem; /* Adjust padding for mobile */
-            border-bottom: 1px solid #444;
-            display: block; /* Ensure 'a' tags take full width for tapping */
-            color: #fff; /* Ensure link color is white like original nav */
-        }
-        
-        #main-nav-ul li a:hover {
-            background-color: #555; /* Consistent hover for mobile */
-        }
-
-        #main-nav-ul li:last-child a {
-            border-bottom: none;
-        }
-
-        /* Mobile styling for dropdowns */
-        #main-nav-ul .dropdown {
-            display: block; /* Show dropdowns by default in mobile view */
-            position: static;
-            width: 100%;
-            background-color: transparent; 
-            box-shadow: none;
-            padding-left: 1rem; /* Indent sub-menu items */
-        }
-
-        #main-nav-ul .dropdown li a {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            font-size: 0.9em; /* Slightly smaller font for sub-items */
-            border-bottom: none; 
-        }
-         #main-nav-ul .dropdown li a:hover {
-            background-color: #555; /* Different hover for mobile submenu */
-        }
-    }
-
-    /* --- General Image Responsiveness --- */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* --- Additional Mobile Layout Adjustments --- */
-    @media (max-width: 767px) {
-        .content {
-            flex-direction: column;
-            align-items: center;
-            margin-top: 2rem; /* Reduced from -83vh */
-        }
-
-        .image, .text {
-            width: 100% !important; /* Override inline styles or more specific rules if any */
-            max-width: 500px; 
-            float: none !important; /* Ensure no float */
-        }
-
-        .text {
-            margin-top: 2rem; /* Add space between image and text */
-        }
-
-        .logo-svg, .connecting-svg {
-            width: 360px; /* Original width */
-            max-width: 100%; /* Ensure it shrinks if viewport is narrower than 360px */
-            height: auto;
-            display: block; /* Added for consistent centering with margin auto */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* If .image img has specific vh margins, target it */
-        .image img { /* This selector was in style.css, assuming it applies to the main content image */
-             margin-bottom: 2rem !important; /* Override 13vh */
-        }
-
-
-        section { 
-            padding-left: 1rem; 
-            padding-right: 1rem; 
-        }
-
-        footer {
-            height: auto;
-            padding: 2rem;
-            margin-top: 2rem; 
-            text-align: center;
-        }
-        
-        .title-container {
-            top: -1rem; 
-            margin-bottom: 1rem; 
-        }
-        .title-container h1 {
-            margin-top: 2rem !important; /* Reduce original 6.25rem */
-            font-size: 2rem !important; /* Adjust font size for mobile */
-        }
-        .logo-container {
-            top: -1rem;
-        }
-        .connecting-container {
-            /* The fixed width/height on the img tag itself is the primary issue. */
-            /* CSS for the container might not fully solve it without HTML img attr change. */
-            position: relative; /* Reset from potentially problematic values */
-            bottom: auto;
-            /* width: auto; /* Let content (img) dictate width */
-            /* height: auto; */
-        }
-
-        /* Make subsection separators flow in content on mobile */
-        .subsection-separator-wrapper { 
-            position: static !important; 
-            margin-top: 2rem; 
-            margin-bottom: 2rem; 
-            /* Explicitly set bottom to auto if it was previously set */
-            bottom: auto !important; 
-        }
-
-        /* --- Mobile Typography Adjustments --- */
-        h1, .title-container h1 { /* .title-container h1 was 2rem, this unifies to 1.8rem */
-            font-size: 1.8rem !important; 
-            line-height: 1.2 !important;
-        }
-        h2, .subsection h2 {
-            font-size: 1.5rem !important;
-            line-height: 1.3 !important;
-        }
-        h3 { 
-            font-size: 1.3rem !important;
-            line-height: 1.3 !important;
-        }
-
-        .text { /* Main body text */
-            font-size: 1rem !important; /* Reduced from 1.375rem default */
-            line-height: 1.6 !important;
-        }
-        /* .text p margin-bottom: 0.8em; should scale correctly with parent's font-size */
-        
-        .subsection { /* General text in subsections, if not covered by .text */
-            font-size: 1rem !important; /* Reduced from 1.25rem default */
-            line-height: 1.6 !important;
-        }
-
-        footer { /* Footer text */
-            font-size: 0.9rem !important; /* Reduced from 1.25rem default */
-        }
-        /* End of Mobile Typography Adjustments */
-
-        /* --- coaching.html & community.html specific mobile overrides --- */
-        section#coaching .subsection > .flex.justify-center.w-full,
-        section#community .subsection > .flex.justify-center.w-full {
-            margin-top: 2rem !important; /* Drastically reduce from inline 82vh */
-        }
-
-        /* Targeting the anchor-offset divs within coaching or community sections */
-        section#coaching .anchor-offset,
-        section#community .anchor-offset {
-            margin-top: 0 !important; /* Reset negative -7vh margin */
-            padding-top: 1rem; /* Example: provide some space above the heading */
-        }
-        /* End of coaching.html & community.html specific mobile overrides */
-    }
     </style>
 </head>
 <body>
     <nav>
-        <button id="hamburger-button" class="md:hidden block text-white p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-        </button>
-        <ul id="main-nav-ul" class="md:flex md:justify-center"> {/* Removed 'hidden' class */}
+        <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Me</a></li>
             <li>
@@ -311,9 +120,9 @@
         <div class="title-container">
             <h1>Sorin Tanasa, PhD</h1>
             <div class="logo-container">
-                <img class="logo-svg" src="logo.svg" alt="Sorin Tanasa Logo">
+                <img class="logo-svg" src="logo.svg" alt="Sorin Tanasa Logo" width="360" height="360">
                 <div class="connecting-container">
-                    <img class="connecting-svg" src="connecting.svg" alt="Connecting people motto">
+                    <img class="connecting-svg" src="connecting.svg" alt="Connecting people motto" width="360" height="360">
                 </div>
             </div>
         </div>
@@ -323,6 +132,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const dropdowns = document.querySelectorAll('.dropdown');
+
                 dropdowns.forEach(dropdown => {
                     const parent = dropdown.parentNode;
                     parent.addEventListener('mouseenter', function() {
@@ -331,35 +141,24 @@
                     parent.addEventListener('mouseleave', function() {
                         dropdown.classList.remove('show');
                     });
-                }); // End of dropdowns.forEach
 
-                const subsections = document.querySelectorAll('.subsection');
-                subsections.forEach(subsection => {
-                    subsection.style.minHeight = '100vh';
-                    subsection.style.height = 'auto';
-                }); // End of subsections.forEach
+                    const subsections = document.querySelectorAll('.subsection');
+                    subsections.forEach(subsection => {
+                        subsection.style.height = '100vh';
+                    });
+                });
 
                 // Smooth scrolling
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
                         e.preventDefault();
+
                         document.querySelector(this.getAttribute('href')).scrollIntoView({
                             behavior: 'smooth'
                         });
                     });
-                }); // End of smooth scrolling.forEach
-
-                // Hamburger Menu Toggle Script
-                const hamburgerButton = document.getElementById('hamburger-button');
-                const mainNavUl = document.getElementById('main-nav-ul');
-
-                if (hamburgerButton && mainNavUl) {
-                    hamburgerButton.addEventListener('click', function() {
-                        mainNavUl.classList.toggle('mobile-menu-active'); // Use the new class
-                    });
-                }
-                // End of Hamburger Menu Toggle Script
-            }); // End of DOMContentLoaded
+                });
+            });
 
             // Reset animations on page load
             const animatedNodes = document.querySelectorAll('.animated-node');
