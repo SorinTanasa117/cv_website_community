@@ -175,9 +175,10 @@
         }
 
         .logo-svg, .connecting-svg {
-            width: 70%;
-            max-width: 250px;
+            width: 360px; /* Original width */
+            max-width: 100%; /* Ensure it shrinks if viewport is narrower than 360px */
             height: auto;
+            display: block; /* Added for consistent centering with margin auto */
             margin-left: auto;
             margin-right: auto;
         }
@@ -257,6 +258,56 @@
             font-size: 0.9rem !important; /* Reduced from 1.25rem default */
         }
         /* End of Mobile Typography Adjustments */
+
+        /* --- contact.html specific mobile overrides --- */
+        section#contact > h2[style*="margin-top: -2vh"] {
+            margin-top: 0 !important;
+            padding-top: 1rem;
+        }
+
+        section#contact > div[style*="display: flex"] {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+
+        section#contact > div[style*="display: flex"] > .text {
+            width: 100% !important;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        section#contact .text > ul[style*="display: flex"] {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        section#contact .text > ul[style*="display: flex"] > li > a {
+            margin-right: 0 !important;
+        }
+
+        section#contact .text > ul[style*="display: flex"] > li > a > img {
+            height: 40px !important;
+            width: auto !important;
+        }
+
+        section#contact > div[style*="display: flex"] > div:nth-child(2) {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        section#contact > div[style*="display: flex"] > div:nth-child(2) > p {
+            font-size: 1rem !important;
+        }
+
+        img.whatsapp-qr {
+            width: 200px !important;
+            height: 200px !important;
+            max-width: 100%;
+        }
+        /* End of contact.html specific mobile overrides */
     }
     </style>
 </head>
@@ -335,6 +386,61 @@
         </div>
         </div>
     </section>
-    <script src="script.js"></script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const parent = dropdown.parentNode;
+                    parent.addEventListener('mouseenter', function() {
+                        dropdown.classList.add('show');
+                    });
+                    parent.addEventListener('mouseleave', function() {
+                        dropdown.classList.remove('show');
+                    });
+                }); // End of dropdowns.forEach
+
+                const subsections = document.querySelectorAll('.subsection');
+                subsections.forEach(subsection => {
+                    subsection.style.minHeight = '100vh';
+                    subsection.style.height = 'auto';
+                }); // End of subsections.forEach
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                }); // End of smooth scrolling.forEach
+
+                // Hamburger Menu Toggle Script
+                const hamburgerButton = document.getElementById('hamburger-button');
+                const mainNavUl = document.getElementById('main-nav-ul');
+
+                if (hamburgerButton && mainNavUl) {
+                    hamburgerButton.addEventListener('click', function() {
+                        mainNavUl.classList.toggle('hidden');
+                    });
+                }
+                // End of Hamburger Menu Toggle Script
+            }); // End of DOMContentLoaded
+
+            // Reset animations on page load
+            const animatedNodes = document.querySelectorAll('.animated-node');
+            animatedNodes.forEach(node => {
+                node.classList.remove('animated-node');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                node.classList.add('animated-node');
+            });
+
+            const animatedLines = document.querySelectorAll('.animated-line');
+            animatedLines.forEach(line => {
+                line.classList.remove('animated-line');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                line.classList.add('animated-line');
+            });
+        </script>
 </body>
 </html>

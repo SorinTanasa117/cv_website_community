@@ -216,9 +216,10 @@
         }
 
         .logo-svg, .connecting-svg {
-            width: 70%;
-            max-width: 250px;
+            width: 360px; /* Original width */
+            max-width: 100%; /* Ensure it shrinks if viewport is narrower than 360px */
             height: auto;
+            display: block; /* Added for consistent centering with margin auto */
             margin-left: auto;
             margin-right: auto;
         }
@@ -298,6 +299,20 @@
             font-size: 0.9rem !important; /* Reduced from 1.25rem default */
         }
         /* End of Mobile Typography Adjustments */
+
+        /* --- coaching.html & community.html specific mobile overrides --- */
+        section#coaching .subsection > .flex.justify-center.w-full,
+        section#community .subsection > .flex.justify-center.w-full {
+            margin-top: 2rem !important; /* Drastically reduce from inline 82vh */
+        }
+
+        /* Targeting the anchor-offset divs within coaching or community sections */
+        section#coaching .anchor-offset,
+        section#community .anchor-offset {
+            margin-top: 0 !important; /* Reset negative -7vh margin */
+            padding-top: 1rem; /* Example: provide some space above the heading */
+        }
+        /* End of coaching.html & community.html specific mobile overrides */
     }
     </style>
 </head>
@@ -391,7 +406,7 @@
                 <p>IdeaVerse meetings are a place I created to allow participants to enter a healthy dialogue and join each other in communities, as a refuge from the increasingly alienating virtual world.</p>
 
                 <p>
-                For more details and next events, please check out 
+                For more details and next events, please check out
                 <a href="https://www.meetup.com/ideaverse-talks-ideas-that-shaped-our-reality" style="color:blue" target="_blank" rel="noopener noreferrer">
                     IdeaVerse Dialogues events
                 </a> on Meetup.com.
@@ -404,7 +419,7 @@
 
         </div>
         <div class="subsection white-section">
-            <div id="agora-network" class="anchor-offset" style="margin-top: -7vh;"> 
+            <div id="agora-network" class="anchor-offset" style="margin-top: -7vh;">
                 <h2>Agora Network</h2>
             </div>
             <div class="flex justify-center w-full" style="margin-top: 82vh;">
@@ -415,16 +430,16 @@
             <div class="content" style="margin-top: -80vh;">
                 <div class="text">
                     <p>In ancient Greece, the Agora was a place where people gathered to exchange ideas and engage with their community. Inspired by this tradition, our group is a space for thoughtful conversation and shared experiences.</p>
-                    
+
                     <p>Agora isn't just another discussion to join or event to attend—it's an invitation to explore what might be possible for ourselves and the world around us.</p>
-                    
+
                     <p>This meetup is organized by my dear friend Justin Mainous, using the same discussion format I established in 2023 and consistently allowing open and enlightning onversations that have brought countless people together as a community ever since.</p>
                     <p>
-                    <p>For more details and next events, please check out 
+                    <p>For more details and next events, please check out
                     <a href="https://www.meetup.com/prague-stoicism-meetup-group" style="color:blue" target="_blank" rel="noopener noreferrer">
                         Agora Network events
                     </a> on Meetup.com.
-                    
+
                 </div>
                 <div class="image">
                     <img src="images/agora.png" alt="Agora Network">
@@ -432,7 +447,7 @@
             </div>
         </div>
         <div class="subsection white-section">
-            <div id="tea-ceremony" class="anchor-offset" style="margin-top: -7vh;"> 
+            <div id="tea-ceremony" class="anchor-offset" style="margin-top: -7vh;">
                 <h2>Chinese tea ceremony</h2>
             </div>
             <div class="flex justify-center w-full" style="margin-top: 82vh;">
@@ -460,10 +475,66 @@
         </div>
 
     </section>
-   
+
     <footer class="flex justify-center items-center gap-4 py-2 mb-0">
         <p><br> </br>'Good friends, good companions, and good associates are not just part of the spiritual life. They ARE the spiritual life.'
         <br><br><em>The Buddha, Upaddhasutta, SN 45.2</em><br> </br></p>
     </footer>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const parent = dropdown.parentNode;
+                    parent.addEventListener('mouseenter', function() {
+                        dropdown.classList.add('show');
+                    });
+                    parent.addEventListener('mouseleave', function() {
+                        dropdown.classList.remove('show');
+                    });
+                }); // End of dropdowns.forEach
+
+                const subsections = document.querySelectorAll('.subsection');
+                subsections.forEach(subsection => {
+                    subsection.style.minHeight = '100vh';
+                    subsection.style.height = 'auto';
+                }); // End of subsections.forEach
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                }); // End of smooth scrolling.forEach
+
+                // Hamburger Menu Toggle Script
+                const hamburgerButton = document.getElementById('hamburger-button');
+                const mainNavUl = document.getElementById('main-nav-ul');
+
+                if (hamburgerButton && mainNavUl) {
+                    hamburgerButton.addEventListener('click', function() {
+                        mainNavUl.classList.toggle('hidden');
+                    });
+                }
+                // End of Hamburger Menu Toggle Script
+            }); // End of DOMContentLoaded
+
+            // Reset animations on page load
+            const animatedNodes = document.querySelectorAll('.animated-node');
+            animatedNodes.forEach(node => {
+                node.classList.remove('animated-node');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                node.classList.add('animated-node');
+            });
+
+            const animatedLines = document.querySelectorAll('.animated-line');
+            animatedLines.forEach(line => {
+                line.classList.remove('animated-line');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                line.classList.add('animated-line');
+            });
+        </script>
 </body>
 </html>

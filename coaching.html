@@ -217,9 +217,10 @@
         }
 
         .logo-svg, .connecting-svg {
-            width: 70%;
-            max-width: 250px;
+            width: 360px; /* Original width */
+            max-width: 100%; /* Ensure it shrinks if viewport is narrower than 360px */
             height: auto;
+            display: block; /* Added for consistent centering with margin auto */
             margin-left: auto;
             margin-right: auto;
         }
@@ -299,6 +300,17 @@
             font-size: 0.9rem !important; /* Reduced from 1.25rem default */
         }
         /* End of Mobile Typography Adjustments */
+
+        /* --- coaching.html specific mobile overrides --- */
+        section#coaching .subsection > .flex.justify-center.w-full {
+            margin-top: 2rem !important; /* Drastically reduce from inline 82vh */
+        }
+
+        section#coaching .anchor-offset {
+            margin-top: 0 !important; /* Reset negative -7vh margin */
+            padding-top: 1rem;
+        }
+        /* End of coaching.html specific mobile overrides */
     }
     </style>
 </head>
@@ -457,5 +469,61 @@
             It stays in the lowly places that others disdain.<br>Therefore it is close to the Tao.'
         <br><br><em>Lao Tzu, Tao Te Ching (on leadership), Chapter 8</em>.<br> </br></p>
     </footer>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const parent = dropdown.parentNode;
+                    parent.addEventListener('mouseenter', function() {
+                        dropdown.classList.add('show');
+                    });
+                    parent.addEventListener('mouseleave', function() {
+                        dropdown.classList.remove('show');
+                    });
+                }); // End of dropdowns.forEach
+
+                const subsections = document.querySelectorAll('.subsection');
+                subsections.forEach(subsection => {
+                    subsection.style.minHeight = '100vh';
+                    subsection.style.height = 'auto';
+                }); // End of subsections.forEach
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                }); // End of smooth scrolling.forEach
+
+                // Hamburger Menu Toggle Script
+                const hamburgerButton = document.getElementById('hamburger-button');
+                const mainNavUl = document.getElementById('main-nav-ul');
+
+                if (hamburgerButton && mainNavUl) {
+                    hamburgerButton.addEventListener('click', function() {
+                        mainNavUl.classList.toggle('hidden');
+                    });
+                }
+                // End of Hamburger Menu Toggle Script
+            }); // End of DOMContentLoaded
+
+            // Reset animations on page load
+            const animatedNodes = document.querySelectorAll('.animated-node');
+            animatedNodes.forEach(node => {
+                node.classList.remove('animated-node');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                node.classList.add('animated-node');
+            });
+
+            const animatedLines = document.querySelectorAll('.animated-line');
+            animatedLines.forEach(line => {
+                line.classList.remove('animated-line');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                line.classList.add('animated-line');
+            });
+        </script>
 </body>
 </html>

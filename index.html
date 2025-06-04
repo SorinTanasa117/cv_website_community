@@ -177,9 +177,10 @@
         }
 
         .logo-svg, .connecting-svg {
-            width: 70%;
-            max-width: 250px;
+            width: 360px; /* Original width */
+            max-width: 100%; /* Ensure it shrinks if viewport is narrower than 360px */
             height: auto;
+            display: block; /* Added for consistent centering with margin auto */
             margin-left: auto;
             margin-right: auto;
         }
@@ -259,6 +260,20 @@
             font-size: 0.9rem !important; /* Reduced from 1.25rem default */
         }
         /* End of Mobile Typography Adjustments */
+
+        /* --- coaching.html & community.html specific mobile overrides --- */
+        section#coaching .subsection > .flex.justify-center.w-full,
+        section#community .subsection > .flex.justify-center.w-full {
+            margin-top: 2rem !important; /* Drastically reduce from inline 82vh */
+        }
+
+        /* Targeting the anchor-offset divs within coaching or community sections */
+        section#coaching .anchor-offset,
+        section#community .anchor-offset {
+            margin-top: 0 !important; /* Reset negative -7vh margin */
+            padding-top: 1rem; /* Example: provide some space above the heading */
+        }
+        /* End of coaching.html & community.html specific mobile overrides */
     }
     </style>
 </head>
@@ -289,7 +304,7 @@
                 </ul>
             </li>
             <li><a href="contact.html">Contact</a></li>
-        
+
     </nav>
     <section id="home">
         <div class="title-container">
@@ -303,11 +318,10 @@
         </div>
     </section>
 
-    
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const dropdowns = document.querySelectorAll('.dropdown');
-
                 dropdowns.forEach(dropdown => {
                     const parent = dropdown.parentNode;
                     parent.addEventListener('mouseenter', function() {
@@ -316,25 +330,35 @@
                     parent.addEventListener('mouseleave', function() {
                         dropdown.classList.remove('show');
                     });
+                }); // End of dropdowns.forEach
 
-                    const subsections = document.querySelectorAll('.subsection');
-                    subsections.forEach(subsection => {
-                        subsection.style.minHeight = '100vh'; // Changed from height
-                        subsection.style.height = 'auto';     // Allow it to grow if content is taller
-                    });
-                });
+                const subsections = document.querySelectorAll('.subsection');
+                subsections.forEach(subsection => {
+                    subsection.style.minHeight = '100vh';
+                    subsection.style.height = 'auto';
+                }); // End of subsections.forEach
 
                 // Smooth scrolling
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
                         e.preventDefault();
-
                         document.querySelector(this.getAttribute('href')).scrollIntoView({
                             behavior: 'smooth'
                         });
                     });
-                });
-            });
+                }); // End of smooth scrolling.forEach
+
+                // Hamburger Menu Toggle Script
+                const hamburgerButton = document.getElementById('hamburger-button');
+                const mainNavUl = document.getElementById('main-nav-ul');
+
+                if (hamburgerButton && mainNavUl) {
+                    hamburgerButton.addEventListener('click', function() {
+                        mainNavUl.classList.toggle('hidden');
+                    });
+                }
+                // End of Hamburger Menu Toggle Script
+            }); // End of DOMContentLoaded
 
             // Reset animations on page load
             const animatedNodes = document.querySelectorAll('.animated-node');
