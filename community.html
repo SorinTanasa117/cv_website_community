@@ -161,7 +161,7 @@
             display: block; /* Ensure 'a' tags take full width for tapping */
             color: #fff; /* Ensure link color is white like original nav */
         }
-
+        
         #main-nav-ul li a:hover {
             background-color: #555; /* Consistent hover for mobile */
         }
@@ -175,7 +175,7 @@
             display: block; /* Show dropdowns by default in mobile view */
             position: static;
             width: 100%;
-            background-color: transparent;
+            background-color: transparent; 
             box-shadow: none;
             padding-left: 1rem; /* Indent sub-menu items */
         }
@@ -184,7 +184,7 @@
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
             font-size: 0.9em; /* Slightly smaller font for sub-items */
-            border-bottom: none;
+            border-bottom: none; 
         }
          #main-nav-ul .dropdown li a:hover {
             background-color: #555; /* Different hover for mobile submenu */
@@ -207,7 +207,7 @@
 
         .image, .text {
             width: 100% !important; /* Override inline styles or more specific rules if any */
-            max-width: 500px;
+            max-width: 500px; 
             float: none !important; /* Ensure no float */
         }
 
@@ -216,9 +216,10 @@
         }
 
         .logo-svg, .connecting-svg {
-            width: 70%;
-            max-width: 250px;
+            width: 360px; /* Original width */
+            max-width: 100%; /* Ensure it shrinks if viewport is narrower than 360px */
             height: auto;
+            display: block; /* Added for consistent centering with margin auto */
             margin-left: auto;
             margin-right: auto;
         }
@@ -228,21 +229,21 @@
         }
 
 
-        section {
-            padding-left: 1rem;
-            padding-right: 1rem;
+        section { 
+            padding-left: 1rem; 
+            padding-right: 1rem; 
         }
 
         footer {
             height: auto;
             padding: 2rem;
-            margin-top: 2rem;
+            margin-top: 2rem; 
             text-align: center;
         }
-
+        
         .title-container {
-            top: -1rem;
-            margin-bottom: 1rem;
+            top: -1rem; 
+            margin-bottom: 1rem; 
         }
         .title-container h1 {
             margin-top: 2rem !important; /* Reduce original 6.25rem */
@@ -261,24 +262,24 @@
         }
 
         /* Make subsection separators flow in content on mobile */
-        .subsection-separator-wrapper {
-            position: static !important;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+        .subsection-separator-wrapper { 
+            position: static !important; 
+            margin-top: 2rem; 
+            margin-bottom: 2rem; 
             /* Explicitly set bottom to auto if it was previously set */
-            bottom: auto !important;
+            bottom: auto !important; 
         }
 
         /* --- Mobile Typography Adjustments --- */
         h1, .title-container h1 { /* .title-container h1 was 2rem, this unifies to 1.8rem */
-            font-size: 1.8rem !important;
+            font-size: 1.8rem !important; 
             line-height: 1.2 !important;
         }
         h2, .subsection h2 {
             font-size: 1.5rem !important;
             line-height: 1.3 !important;
         }
-        h3 {
+        h3 { 
             font-size: 1.3rem !important;
             line-height: 1.3 !important;
         }
@@ -288,7 +289,7 @@
             line-height: 1.6 !important;
         }
         /* .text p margin-bottom: 0.8em; should scale correctly with parent's font-size */
-
+        
         .subsection { /* General text in subsections, if not covered by .text */
             font-size: 1rem !important; /* Reduced from 1.25rem default */
             line-height: 1.6 !important;
@@ -298,6 +299,20 @@
             font-size: 0.9rem !important; /* Reduced from 1.25rem default */
         }
         /* End of Mobile Typography Adjustments */
+
+        /* --- coaching.html & community.html specific mobile overrides --- */
+        section#coaching .subsection > .flex.justify-center.w-full,
+        section#community .subsection > .flex.justify-center.w-full {
+            margin-top: 2rem !important; /* Drastically reduce from inline 82vh */
+        }
+
+        /* Targeting the anchor-offset divs within coaching or community sections */
+        section#coaching .anchor-offset,
+        section#community .anchor-offset {
+            margin-top: 0 !important; /* Reset negative -7vh margin */
+            padding-top: 1rem; /* Example: provide some space above the heading */
+        }
+        /* End of coaching.html & community.html specific mobile overrides */
     }
     </style>
 </head>
@@ -465,5 +480,61 @@
         <p><br> </br>'Good friends, good companions, and good associates are not just part of the spiritual life. They ARE the spiritual life.'
         <br><br><em>The Buddha, Upaddhasutta, SN 45.2</em><br> </br></p>
     </footer>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const parent = dropdown.parentNode;
+                    parent.addEventListener('mouseenter', function() {
+                        dropdown.classList.add('show');
+                    });
+                    parent.addEventListener('mouseleave', function() {
+                        dropdown.classList.remove('show');
+                    });
+                }); // End of dropdowns.forEach
+
+                const subsections = document.querySelectorAll('.subsection');
+                subsections.forEach(subsection => {
+                    subsection.style.minHeight = '100vh';
+                    subsection.style.height = 'auto';
+                }); // End of subsections.forEach
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                }); // End of smooth scrolling.forEach
+
+                // Hamburger Menu Toggle Script
+                const hamburgerButton = document.getElementById('hamburger-button');
+                const mainNavUl = document.getElementById('main-nav-ul');
+
+                if (hamburgerButton && mainNavUl) {
+                    hamburgerButton.addEventListener('click', function() {
+                        mainNavUl.classList.toggle('hidden');
+                    });
+                }
+                // End of Hamburger Menu Toggle Script
+            }); // End of DOMContentLoaded
+
+            // Reset animations on page load
+            const animatedNodes = document.querySelectorAll('.animated-node');
+            animatedNodes.forEach(node => {
+                node.classList.remove('animated-node');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                node.classList.add('animated-node');
+            });
+
+            const animatedLines = document.querySelectorAll('.animated-line');
+            animatedLines.forEach(line => {
+                line.classList.remove('animated-line');
+                void node.offsetWidth; // Trigger reflow to restart animation
+                line.classList.add('animated-line');
+            });
+        </script>
 </body>
 </html>
